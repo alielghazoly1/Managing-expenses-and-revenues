@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="logo/Account-rafiki.svg">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>نظام إدارة المصروفات والإيرادات</title>
+  </head>
+  <body class="bg-gray-100">
+    <div class="container mt-6 mx-auto bg-white p-6 rounded-lg shadow-md">
+      <h1 class="text-3xl text-center font-bold mb-6">
+        نظام إدارة المصروفات والإيرادات
+      </h1>
+
+      <!-- my inputs -->
+      <div
+        id="inputs"
+        class="flex flex-col md:flex-row items-center gap-3 bg-gray-50 p-4 rounded-xl shadow-md text-lg"
+      >
+        <select
+          id="selection"
+          class="p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-400 outline-none w-full md:w-auto"
+        >
+          <option value="expense">مصروف</option>
+          <option value="income">إيراد</option>
+        </select>
+
+        <input
+          id="description"
+          type="text"
+          class="flex-1 border border-gray-300 rounded-lg p-3 outline-none focus:ring-2 focus:ring-blue-400"
+          placeholder="الوصف"
+        />
+
+        <input
+          id="amount"
+          type="number"
+          class="flex-1 border border-gray-300 rounded-lg p-3 outline-none focus:ring-2 focus:ring-blue-400"
+          placeholder="المبلغ"
+        />
+
+        <button
+          id="addBtn"
+          class="bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-lg shadow-lg transition duration-200"
+        >
+          إضافة
+        </button>
+        <!-- get total net income and expenses -->
+      </div>
+      <div
+        id="NetTotal"
+        class="relative mt-10 mx-auto max-w-2xl bg-white rounded-3xl shadow-xl border border-gray-200 overflow-hidden"
+      >
+        <div
+          class="absolute inset-0 bg-gradient-to-r from-blue-100 via-green-50 to-blue-100"
+        ></div>
+
+        <div
+          class="relative z-10 p-8 flex flex-col md:flex-row justify-between items-center gap-6"
+        >
+          <div id="netIncomeIn" class="text-center md:text-right flex-1">
+            <h2
+              class="text-3xl font-extrabold text-gray-800 mb-2 tracking-wide"
+            >
+              صافي المبلغ
+            </h2>
+            <div
+              class="font-bold text-4xl text-blue-600 flex justify-center md:justify-end items-center gap-2 transition-all duration-500 ease-in-out"
+            >
+              <span id="totalNet">0</span>
+              <span class="text-gray-700 text-2xl">جنيه</span>
+            </div>
+          </div>
+          <!-- get buttons delete all and print -->
+          <div class="flex gap-4">
+            <button
+              id="printBtn"
+              class="bg-blue-500 hover:bg-blue-600 text-white font-semibold px-6 py-2 rounded-full shadow-md transition-all duration-300 ease-in-out active:scale-95 flex items-center gap-2"
+            >
+              طباعة
+            </button>
+
+            <button
+              id="deleteAllBtn"
+              class="bg-red-500 hover:bg-red-600 text-white font-semibold px-6 py-2 rounded-full shadow-md transition-all duration-300 ease-in-out active:scale-95 flex items-center gap-2"
+            >
+              حذف الكل
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- My show Data -->
+      <div id="myapp"
+        class="flex flex-col md:flex-row items-start mt-6 gap-6 text-lg leading-relaxed"
+      >
+        <!-- Expenses Section -->
+        <div
+          class="w-full md:w-1/2 p-6 bg-red-50 border border-red-200 rounded-xl shadow-md"
+        >
+          <h2
+            class="text-2xl font-extrabold mb-4 text-red-600 border-b-2 border-red-300 pb-2 text-center"
+          >
+            المصروفات
+          </h2>
+          <ul id="expensesList" class="space-y-3">
+            <!-- face data -->
+          </ul>
+          <div
+            class="mt-6 font-bold text-red-700 text-xl flex justify-between items-center"
+          >
+            <span>الإجمالي:</span>
+            <span id="totalExpenses">0</span>
+          </div>
+        </div>
+
+        <!-- Income Section -->
+        <div
+          class="w-full md:w-1/2 p-6 bg-green-50 border border-green-200 rounded-xl shadow-md"
+        >
+          <h2
+            class="text-2xl font-extrabold mb-4 text-green-600 border-b-2 border-green-300 pb-2 text-center"
+          >
+            الإيرادات
+          </h2>
+          <ul id="incomeList" class="space-y-3">
+            <!-- face data -->
+          </ul>
+          <div
+            class="mt-6 font-bold text-green-700 text-xl flex justify-between items-center"
+          >
+            <span>الإجمالي:</span>
+            <span id="totalIncome">0</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="main.js"></script>
+  </body>
+</html>
